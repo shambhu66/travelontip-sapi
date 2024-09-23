@@ -132,7 +132,7 @@ output application/json
     <flow name="get:\(transportType)\(transportCompany)\routes:retrievetravelontiprouteandschedule-sapi-config">
 		<flow-ref doc:name="Flow Reference" doc:id="67eeaded-9e3f-4ccd-ba95-acaf63451a16" name="retrievetravelontiprouteandschedule-sapiSub_Flow"/>
 		<logger level="INFO" doc:name="Logger" doc:id="920b34c3-3359-4c38-ad20-6556c13934e5" message="Get Route Invoked TrasactionId : #[attributes.headers.transactionId]" />
-		<flow-ref doc:name="Flow Reference" doc:id="70c6f608-b4da-440f-83d1-15d88565bd75" name="getRouteImplementationSub_Flow"/>
+		<flow-ref doc:name="Flow Reference" doc:id="70c6f608-b4da-440f-83d1-15d88565bd75" name="getRouteImplementationFlow"/>
 		<logger level="INFO" doc:name="Logger" doc:id="09d6e0af-10b7-4f9a-8a9b-b01e2ec98335" message="Get Route exits TrasactionId : #[attributes.headers.transactionId]"/>
     </flow>
     <flow name="get:\(transportType)\(transportCompany)\schedules:retrievetravelontiprouteandschedule-sapi-config">
