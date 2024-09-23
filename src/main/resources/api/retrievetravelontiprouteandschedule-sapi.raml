@@ -1,0 +1,66 @@
+#%RAML 1.0
+title: RetrieveTravelOnTipRouteAndSchedule-SAPI
+description: This APi will fetch routes and schedules from travel on tip system
+
+types:
+  getRouteDataType : !include /libraries/datatype/getRoutes-200Response-datatypes.raml
+  getScheduleDataType : !include /libraries/datatype/getschedules-200Response-datatypes.raml
+  commonError: !include /libraries/common/datatypes/common-error-dataType.raml
+
+uses:
+  common: /libraries/common/traits/CommonLibrary.raml
+
+/{transportType}:
+  /{transportCompany}:
+    /routes:
+      get:
+        is:
+          - common.transactionId
+        responses:
+              200:
+                  body:
+                      application/json:
+                        type: getRouteDataType
+                        example: !include /libraries/routes/getRoutes-200Response-example.json           
+              400:
+               body:
+                 application/json:
+                   type: commonError
+                   example: !include /libraries/common/examples/400Response-example.json
+              404:
+                 body:
+                  application/json:
+                   type: commonError
+                   example: !include /libraries/common/examples/404Response-example.json
+              500:
+                body:
+                 application/json:
+                   type: commonError
+                   example: !include /libraries/common/examples/500Response-example.json        
+    /schedules: 
+      get:
+        is:
+          - common.transactionId
+          - common.departureLocationCodes
+          - common.destinationLocationcode
+        responses:
+              200:
+                  body:
+                      application/json:
+                        type: getScheduleDataType      
+                        example: !include /libraries/schedules/getSchedule-200response-Example.json                          
+              400:
+               body:
+                 application/json:
+                   type: commonError
+                   example: !include /libraries/common/examples/400Response-example.json
+              404:
+                 body:
+                  application/json:
+                   type: commonError
+                   example: !include /libraries/common/examples/404Response-example.json
+              500:
+                body:
+                 application/json:
+                   type: commonError
+                   example: !include /libraries/common/examples/500Response-example.json                                       
